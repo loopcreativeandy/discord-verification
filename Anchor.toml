@@ -1,6 +1,9 @@
 [programs.localnet]
 dvp = "DVPyjRxvx7ABzpnFCrvdDB2kLd1FDQBkRzfrLpHtnNvk"
 
+[programs.devnet]
+dvp = "DVPyjRxvx7ABzpnFCrvdDB2kLd1FDQBkRzfrLpHtnNvk"
+
 [registry]
 url = "https://anchor.projectserum.com"
 

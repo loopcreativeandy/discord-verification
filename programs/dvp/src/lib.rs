@@ -37,11 +37,11 @@ impl UserAccount {
 #[derive(Accounts)]
 #[instruction(dc_id: u64)]
 pub struct SignUpAccounts<'info> {
+    #[account(mut)]
+    pub signer: Signer<'info>,
     #[account(init, payer = signer, space = 8 + UserAccount::MAX_SIZE,
         seeds = [b"discord".as_ref(), &dc_id.to_le_bytes()], bump)]
     pub user_account: Account<'info, UserAccount>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
     pub system_program: Program<'info, System>
 }
 

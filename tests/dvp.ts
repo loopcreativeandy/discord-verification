@@ -26,18 +26,22 @@ describe('dvp', () => {
 
 
   it('Is signed up!', async () => {
-    const userID = 16358092002033784;
+    const uid = new anchor.BN("16358092002033784");
+    const uname = "Andy#007";
     const seed1 = Buffer.from(anchor.utils.bytes.utf8.encode("discord"));
-    //const seed2 = Buffer.from(anchor.utils.bytes.utf8.encode("discord"));
-    const [userAccount, _bump] = findProgramAddressSync([seed1], program.programId);
-    console.log(userAccount)
-    const tx = await program.rpc.singup({
+    const seed2 = uid.toArray("le",8);
+    console.log(seed2);
+    const [userAccount, _bump] = findProgramAddressSync([seed1, seed2], program.programId);
+    console.log(userAccount);
+    console.log(program.programId.toBase58());
+    const tx = await program.rpc.singup(uid, uname, 
+    {
       accounts: {
-        userAccount,
         signer: testUserKP.publicKey,
+        userAccount,
         systemProgram: anchor.web3.SystemProgram.programId,
       },
-      signers: [testUserKP],
+      signers: [testUserKP]
     });
     console.log("Your transaction signature", tx);
   });
