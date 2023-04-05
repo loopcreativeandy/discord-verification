@@ -6,7 +6,7 @@ const Signup: NextPage = (props) => {
   return (
     <div>
       <Head>
-        <title>Sign Up for Andy's Discord</title>
+        <title>Sign Up</title>
         <meta
           name="description"
           content="Sign up"
